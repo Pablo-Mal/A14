@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>A14</title>
+    <link rel="stylesheet" href="styles/main.css">
+	<script>
+	function setCookie(cname,cvalue,exdays) {
+		var d = new Date();
+		d.setTime(d.getTime() + (exdays*24*60*60*1000));
+		var expires = "expires=" + d.toGMTString();
+		document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	}
+
+	function getCookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i < ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return c.substring(name.length, c.length);
+			}
+		}
+		return "";
+	}
+
+	function checkCookie() {
+		var user=getCookie("cookieValue");
+		if (user != "") {
+			alert("Cookie value: " + user);
+		} else {
+			user = prompt("Please enter a cookie value:","");
+			if (user != "" && user != null) {
+				setCookie("cookieValue", user, 30);
+			}
+		}
+	}
+</script>
+</head>
+<body onload="checkCookie()">
+
+<main>
+	<br>
+	<h1>This is my:</h1>
+	<h2>A14. Unit 11 - HW Create and Display Cookies</h2>
+	<br>
+</main>
+ <footer>
+    <p>&#169; Pablo Maldonado, 4/15/2021</p>
+</footer>
+</body>
+</html>
